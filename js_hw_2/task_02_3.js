@@ -8,8 +8,7 @@ const age_2 = 18;
 const age_3 = 60;
 
 function checkAge(age) { 
-    age = +age; 
-    if (typeof age !== "number"){
+    if (!(+age)){
         return "Your input cannot be proceeded cause it's not a number"
     }  else {
         if (age < age_2) {
