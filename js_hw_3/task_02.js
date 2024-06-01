@@ -23,18 +23,20 @@ const bytesConverter = (value) => {
         value = value / 1024
         i ++
     }
+    let result;
     switch(i) {
-        case 0: return value + " bytes";
+        case 0: result = value + " bytes";
         break;    
-        case 1: return value.toFixed(1) + " Kb";
+        case 1: result = value.toFixed(1) + " Kb";
         break;
-        case 2: return value.toFixed(1) + " Mb";
+        case 2: result = value.toFixed(1) + " Mb";
         break;
-        case 3: return value.toFixed(1) + " Gb";
+        case 3: result = value.toFixed(1) + " Gb";
         break;
-        case 4: return value.toFixed(1) + " Tb";
+        case 4: result = value.toFixed(1) + " Tb";
         break;
     }
+    return result
     }
     
         

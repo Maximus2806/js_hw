@@ -1,7 +1,7 @@
 // 1. Создайте цикл, который выведет в консоль цифры от 10 до 0
 
-for (let number = 10; number >= 0; number--){
-    console.log(number)
+for (let i = 10; i >= 0; i--){
+    console.log(i)
 };
 
 // 2. Написать скрипт, который выведет 5 строк в консоль таким образом, чтобы в первой строчке выводилось :), во второй :):) и так далее
@@ -12,7 +12,7 @@ for (let number = 10; number >= 0; number--){
 //   :):):):)
 //   :):):):):)
 let smile = ":)";
-for (let number = 0; number < 5; number++) {
+for (let i = 0; i < 5; i++) {
     console.log(smile);
     smile = smile + ":)"
 };
