@@ -33,8 +33,8 @@ console.log(countLetters("Barbitura"))
 
 function encryptCezar(str, offset){
     if(str!== undefined && str!== null && str.length > 0 && (offset === -1 || offset === 1)){
-        let alphabet = 'abcdefghijklmnopqrstuvwxyz';
-        let alphabetUp = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const alphabet = 'abcdefghijklmnopqrstuvwxyz';
+        const alphabetUp = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
         let encryptedStr = '';
         for (char of str){
             let index = alphabet.indexOf(char.toLowerCase());
