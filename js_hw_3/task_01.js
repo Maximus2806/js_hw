@@ -19,8 +19,8 @@ for (let number = 0; number < 5; number++) {
 
 //   Для Оксаны и ее друзей: также реализовать циклом while
 //   Рекоммендация: попробуйте метод .repeat()
-let smile2 = ":)"
-let number2 = 1
+const smile2 = ":)"
+const number2 = 1
 while (number2 <= 5){
     console.log(smile2.repeat(number2));
     number2++
