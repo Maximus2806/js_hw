@@ -40,7 +40,7 @@ const bytesConverter = (value) => {
         
     
 }
-console.log(bytesConverter(1024))
+console.log(bytesConverter(1048575))
 
 // 2. Сделать из "*" в консоли равнобедренный треугольник и ромб
 
