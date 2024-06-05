@@ -20,15 +20,15 @@ function sumOfDigits(num) {
     }
 }
     
-console.log(sumOfDigits("19"))
+console.log(sumOfDigits("19"));
 
 // 6*. Написать функцию, которая принимает на вход строку с текстом, и заменяет каждую пару стоящих подряд идентичных букв на одну следующую в алфавите, 
 //     и так пока в тексте не останется двух одинаковых букв стоящих рядом (через пробел и другой знак препинания можно)
 //     Пример: aabc => bbc => cc => d
 function replaceAllDoublications(str) {
-    if(typeof str !== 'string') throw new Error('Argument must be a string')
+    if(typeof str !== 'string') throw new Error('Argument must be a string');
     str = str.toLocaleLowerCase();
-    if (!checkDoublicationPresence(str)) return str
+    if (!checkDoublicationPresence(str)) return str;
     const result = replaceDoublication(str);
     return checkDoublicationPresence(result) ? replaceAllDoublications(result) : result
     
@@ -38,8 +38,8 @@ function replaceDoublication(str){
     let targetChar;
         for (let i = 0; i < str.length -1; i++) {
             if (str[i] === str[i+1]) {
-                str[i + 1] === 'z' ? targetChar = "a" : targetChar = String.fromCharCode(str.charCodeAt(i)+1)
-                resultStr = resultStr + targetChar
+                str[i + 1] === 'z' ? targetChar = "a" : targetChar = String.fromCharCode(str.charCodeAt(i)+1);
+                resultStr = resultStr + targetChar;
             } else {
                 resultStr = resultStr + str[i+1];
             }
@@ -47,11 +47,11 @@ function replaceDoublication(str){
         return resultStr;
 }
 function checkDoublicationPresence(str){
-    let hasDuplicates = false
+    let hasDuplicates = false;
     for (let i = 0; i < str.length -1; i++) {
         if (str[i] === str[i+1]) {
             hasDuplicates = true;
-            break
+            break;
         }
     }
     return hasDuplicates;
