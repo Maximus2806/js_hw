@@ -7,24 +7,11 @@
 // 7. Для возврата из функции создайте массив, методом .push поместите в него имя и зарплату, и через return верните созданный массив
 // 8. Если такое имя сотрудника в массиве не найдется - вернуть null
 
-function getEmployeeInfo(name) {
-    if(name!== undefined && name!== null && name.length && !+name){
-        const names = ["Bill", "Alex", "Anna", "Jhonn", "Antony"];
+function getEmployeeInfo(name) {    
+    if (!name || !name.length){ throw new Error("Invalid input")}
+    const names = ["Bill", "Alex", "Anna", "Jhonn", "Antony"];
     const salaries = [1500, 3000, 1200, 1700, 850];
     const index = names.indexOf(name);
-    let resultArr = [];
-    for (item of names) {
-        if (item === name){
-            resultArr.push(item);
-            resultArr.push(salaries[index]);
-        }
-    }
-    return index === -1 ? null: resultArr
-    } else 
-    {
-        return "Invalid input";
-    }
-    
+    return [names[index], salaries[index]]
 }
-
 console.log(getEmployeeInfo("Bill"));

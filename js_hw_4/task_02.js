@@ -7,9 +7,10 @@
 
 const competitorPizzas = ['Peperoni', 'Caprichosa', 'Diablo', '4 cheeses', 'hawai'];
 function checkCompetitorsPizzas(myPizzaArr) {
+    const competitorPizzasToLower = competitorPizzas.map(word => word.toLowerCase());
     const uniquePizzas = [];
     for (pizza of myPizzaArr){
-        if (competitorPizzas.indexOf(pizza) === -1){
+        if (competitorPizzasToLower.indexOf(pizza.toLowerCase()) === -1){
             uniquePizzas.push(pizza);
         }        
     }
@@ -25,18 +26,16 @@ console.log(checkCompetitorsPizzas(pizzaSet));
 
 function findLongest(sentence) {
     const wordsArr = sentence.split(' ');
-    let longestWord = "";
-    for (let i = 0; i < wordsArr.length - 1; i++) {
-        if (wordsArr[i].length > longestWord.length){
-            longestWord = wordsArr[i];
+    let longestWordLength = 0;
+    let result = []
+    for (let i = 0; i < wordsArr.length; i++) {
+        if (wordsArr[i].length > longestWordLength){
+            longestWordLength = wordsArr[i].length;
+            result = [wordsArr[i]]
+        } else if (wordsArr[i].length === longestWordLength){
+            result.push(wordsArr[i])
         }
-    }
-    const result = [];
-    for (word of wordsArr) {
-        if (word.length === longestWord.length){
-            result.push(word);
-        }
-    }
+    }    
     return result;
 };
     

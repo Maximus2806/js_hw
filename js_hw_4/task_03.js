@@ -34,14 +34,16 @@ function replaceAllDoublications(str) {
     
 };
 function replaceDoublication(str){
-    let resultStr = "";
+    let resultStr = '';
     let targetChar;
-        for (let i = 0; i < str.length -1; i++) {
+        for (let i = 0; i < str.length; i++) {            
             if (str[i] === str[i+1]) {
                 str[i + 1] === 'z' ? targetChar = "a" : targetChar = String.fromCharCode(str.charCodeAt(i)+1);
                 resultStr = resultStr + targetChar;
+                i++;
             } else {
-                resultStr = resultStr + str[i+1];
+                resultStr = resultStr + str[i];            
+                
             }
         }
         return resultStr;
@@ -57,5 +59,5 @@ function checkDoublicationPresence(str){
     return hasDuplicates;
 }
 
-console.log(replaceAllDoublications("aAbc"));
+console.log(replaceAllDoublications("edaabc"));
 
