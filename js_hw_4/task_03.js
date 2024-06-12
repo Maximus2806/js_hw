@@ -7,9 +7,9 @@ function sumOfDigits(num) {
         return "The argument must be a number!";
     } else {
         const numStr = Math.abs(num).toString();
-        const ArrOfDigits = numStr.split('');
+        const arrOfDigits = numStr.split('');
         let sum = 0;
-        for (digit of ArrOfDigits) {
+        for (digit of arrOfDigits) {
            sum = sum + +digit;
         };
         if (sum <= 9) {
