@@ -11,7 +11,8 @@ function getEmployeeInfo(name) {
     if (!name || !name.length){ throw new Error("Invalid input")}
     const names = ["Bill", "Alex", "Anna", "Jhonn", "Antony"];
     const salaries = [1500, 3000, 1200, 1700, 850];
-    const index = names.indexOf(name);
-    return [names[index], salaries[index]]
+    const index = names.indexOf(name.trim());
+    if (index === -1) return null;
+    return [names[index], salaries[index]];
 }
 console.log(getEmployeeInfo("Bill"));
