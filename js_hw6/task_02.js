@@ -92,18 +92,18 @@ function getAllEmployeesInEnterprise (departments) {
     return (countAll === 0) ? 'нет' : countAll;
 };
 
-logEmployess(enterprises);
+// logEmployess(enterprises);
 
 // 2. Написать функцию, которая будет принимать 1 аргумент (id отдела или название отдела и возвращать название предприятия, к которому относится).
 // Пример:
 // getEnterpriseName(4) // Предприятие 1
 // getEnterpriseName("Отдел маркетинга") // Предприятие 2
 function getEntrepriseName (depIdOrName) {
-    const enterpriseName = getDepartment(depIdOrName);
-    return enterpriseName.name;        
+    const {name} = getEnterprise(depIdOrName);
+    return name;        
     };
     
-function getDepartment (depIdOrName) {
+function getEnterprise (depIdOrName) {
     const foundEnterprise = enterprises.find((enterprise) => {
         const foundDepartment = enterprise.departments.find((department) => department.id === depIdOrName || department.name === depIdOrName);
         return foundDepartment
@@ -112,7 +112,7 @@ function getDepartment (depIdOrName) {
     return foundEnterprise;
 };
 
-console.log(getEntrepriseName(6));
+// console.log(getEntrepriseName(10));
 
 
 // 3. Написать функцию, которая будет добавлять предприятие. В качестве аргумента принимает название предприятия
@@ -140,8 +140,8 @@ function getNewId () {
     return newId + 1;
 };
 
-addEnterprise('Добавленное предприятие');
-console.log(JSON.stringify(enterprises));
+// addEnterprise('Добавленное предприятие');
+// console.log(JSON.stringify(enterprises));
 
 // 4. Написать функцию, которая будет добавлять отдел в предприятие. В качестве аргумента принимает id предприятия, в которое будет добавлен отдел и название отдела.
 
@@ -168,8 +168,8 @@ function generateNewDepartment(name) {
     return newDepartment;
 };
 
-addDepartment(9, "Новый отдел");
-console.log(JSON.stringify(enterprises));
+// addDepartment(9, "Новый отдел");
+// console.log(JSON.stringify(enterprises));
 
 // 5. Написать функцию для редактирования названия предприятия. Принимает в качестве аргумента id предприятия и новое имя предприятия.
 
@@ -181,8 +181,8 @@ function editEnterprise(id, name) {
     enterprise.name = name;
 };
 
-editEnterprise(5, "New name");
-console.log(enterprises);
+// editEnterprise(5, "New name");
+// console.log(enterprises);
 
 // 6. Написать функцию для редактирования названия отдела. Принимает в качестве аргумента id отдела и новое имя отдела.
 
@@ -205,8 +205,8 @@ function findDepartment(id) {
 };
         
 
-editDepartment(2, 'Новый отдел тестирования');
-console.log(JSON.stringify(enterprises));
+// editDepartment(2, 'Новый отдел тестирования');
+// console.log(JSON.stringify(enterprises));
 
 // 7. Написать функцию для удаления предприятия. В качестве аргумента принимает id предприятия.
 
@@ -225,8 +225,8 @@ function deleteEnnterpriseById(id) {
     if (!isDeleted) throw new Error(`Enterprise with id = ${id} not found`);
 }
 
-deleteEnnterpriseById(4);
-console.log(enterprises);
+// deleteEnnterpriseById(4);
+// console.log(enterprises);
 
 // 8. Написать функцию для удаления отдела. В качестве аргумента принимает id отдела. Удалить отдел можно только, если в нем нет сотрудников.
 
@@ -237,15 +237,12 @@ function deleteDepartment(id) {
     const department = findDepartment(id);    
     if (department.employees_count === 0) throw new Error (`Department with id ${id} has no employees`);
     for (const enterprise of enterprises) {
-        for (const department of enterprise.departments) {
-            if (department.id === id && department.employees_count > 0) {
-                enterprise.departments.splice(enterprise.departments.indexOf(department), 1);
-            }
-        }
+      let index = enterprise.departments.findIndex((el) => department.id === el.id);
+      enterprise.departments.splice(index, 1);
     }
 };
 
-deleteDepartment(10);
+deleteDepartment(8);
 console.log(JSON.stringify(enterprises));
 
 // 9. Написать функцию для переноса сотрудников между отделами одного предприятия. 
