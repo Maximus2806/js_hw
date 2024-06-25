@@ -25,13 +25,14 @@ class Snake extends Animal {
     #isPoisonous
     constructor (type, color, weight, height, placeOfOrigin, isPoisonous) {
         super (type, color, weight, height, placeOfOrigin);
+        if (typeof isPoisonous !== 'boolean') throw new Error ('isPoisonous should be boolean value');
         this.#isPoisonous = isPoisonous;
     };
-    checkPoisonous(){
-       if (!(typeof this.#isPoisonous === 'boolean')) throw new Error ('isPoisonous should be boolean value');
+    checkPoisonous(){    
        return this.#isPoisonous;
     };
 };
+
 
 // Task 2.
 // 1. Создайте класс Bird с приватным полем isFlying, отнаследовавшись от Animal
@@ -92,12 +93,12 @@ class Worker {
 // 8. Добавьте методы removeWorker() и removeAnimal() // Подумайте, как будем удалять, по какому полю будем выбирать:)
 
 class Zoo {
-    constructor (address, title, ticketPrice) {
+    constructor (address, title, ticketPrice, workers = [], animals = []) {
         this.address = address;
         this.title = title;
         this.ticketPrice = ticketPrice;
-        this.workers = [];
-        this.animals = [];
+        this.workers = workers;        
+        this.animals = animals;        
     };
     get address() {
         return this._address;
