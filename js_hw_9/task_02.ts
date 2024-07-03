@@ -124,7 +124,7 @@ const testObject: TObj = {
   ];
 
 function countValueTypes(inputObj: TObj): IResult {
-    let result : IResult = {
+    const result : IResult = {
         string: 0,
         number: 0,
         boolean: 0
