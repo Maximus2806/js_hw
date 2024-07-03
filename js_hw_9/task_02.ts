@@ -168,9 +168,7 @@ function filter(arr: TArg, predicate: TPredicate): TRes {
             result.push(num)
         }
     }    
-    return result
-    ```
-    empty array is a valid response from function
+    return result    
 };
 
 const numbers: TArg = [1, -5, 2, 4, 133, -43, 0, 679];
