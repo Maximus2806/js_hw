@@ -5,16 +5,16 @@
 //    Пример:
 //    map([1,2,3,4,5], callback) => [0,2,6,12,20]
 
-type TCallback<I, R> = (item: I) => R;
+type TCallback<I, R> = (item: I, index: number, arr: I[]) => R;
 
 function mapArray<I,R>(arr: I[], callback: TCallback<I,R>):R[] {
     const result: R[] = [];
-    arr.forEach((item) => result.push(callback(item)));
+    arr.forEach((item, index) => result.push(callback(item, index, arr)));
     return result
 };
 
 const testArr = [1,2,3,4,5];
-console.log (mapArray(testArr, (item) => testArr.indexOf(item)*item));
+console.log (mapArray(testArr, (item, i, arr) => arr.indexOf(item)*item));
 
 // 2. Напишите дженерик функцию generateObject, которая принимает массив пар [string, T] 
 //   и возвращает объект, где каждая пара ключ-значение из массива превращается в соответствующую пару ключ-значение в объекте. 
@@ -37,8 +37,8 @@ console.log (mapArray(testArr, (item) => testArr.indexOf(item)*item));
 
 function generateObject<T>(arrOfPairs: [string, T][]):{[key:string]: T} {
     const result: {[key:string]: T} = {};
-    for(const pair of arrOfPairs){
-        result[pair[0]] = pair[1];
+    for(const [key, value] of arrOfPairs){
+        result[key] = value;
     };
     return result
 };
