@@ -43,5 +43,4 @@ type EmployeeReadOnly = Readonly<IEmployee>;
 
 // 9. Создайте тип, для массива объектов, где в ключах могут быть строки, в значениях number, string или boolean
 
-type ArrOfObj = {[key: string]: number | string | boolean}[]
-
+type ArrOfObj = Record<string, number | string | boolean>[];

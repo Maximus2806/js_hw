@@ -23,27 +23,33 @@ class MyStorage<T extends TObj>{
             this.data.push(...arr)
         }
     };
-    private getNewId(objArr:T[]):number {
+
+    private getNewId():number { 
         let newId = 0;
-        objArr.forEach((obj:T) => {
+        this.data.forEach((obj:T) => {
             if (newId < obj.id) newId = obj.id            
         });
         return newId + 1;
     };
 
+    private searchIndex(id: number):number{
+        return this.data.findIndex((item) => item.id === id)
+    };
+    
     add(obj: T): void;
     add(obj: Omit<T, "id">): void;
     add(obj: T | Omit<T, "id">){
         if(!("id" in obj)){
-            const id = this.getNewId(this.data);
+            const id = this.getNewId();
             const newObj = {...obj, id}
             this.data.push(newObj as T)
         } else {            
             this.data.push(obj)
         }
     };
+
     update(obj: Pick<T, "id"> & Partial<T>):void{
-        const index = this.data.findIndex((item) => item.id == obj.id);
+        const index = this.searchIndex(obj.id);
         if (index !== -1) {            
             const currentObj = this.data[index];
             const updatedObj = {...currentObj, ...obj};
@@ -51,18 +57,21 @@ class MyStorage<T extends TObj>{
         }
         
     };
+
     remove(id:number):void {
-        const index = this.data.findIndex((item) => item.id == id);
+        const index = this.searchIndex(id);
         if (index !== -1) {
             this.data.splice(index, 1);
         }        
     };
+
     getById(id:number):T{
         const result = this.data.find((item) => item.id === id);
         if (result !== undefined){
             return result
         } else throw new Error (`Object with id = ${id} was not found`);        
     };
+
     getAll():T[]{
         return this.data
     }
