@@ -34,7 +34,9 @@ async function getData(endpoint) {
         const data = await response.json();
         return data;   
     } catch(err) {
-        console.log(`Response failed with error: "${err.message}"`)
+    console.log(
+      `Response failed with error: "${err.message}" and status code: "${err.cause}"`,
+    );
     }
 };
 
