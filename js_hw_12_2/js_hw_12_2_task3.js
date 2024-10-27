@@ -26,9 +26,11 @@ async function getData(endpoint) {
     const url = 'https://jsonplaceholder.typicode.com'
     try {
         const response = await fetch(url + '/' + endpoint)
-        if (!response.ok) {
-            throw new Error (response.status)
-        }
+    if (!response.ok) {
+      throw new Error(response.statusText, {
+        cause: response.status,
+      });
+    }
         const data = await response.json();
         return data;   
     } catch(err) {
