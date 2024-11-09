@@ -46,15 +46,14 @@
 
 //     console.log(storage.getAll()); // [{ id: 1, name: 'Egor', age: 33 }]
 
-type WithoutId<T> = Omit<T, 'id'>;
+type WithoutId<T extends { id: number }> = Omit<T, 'id'>;
 class Mystorage<T extends { id: number }> {
   private storage: T[] = [];
   constructor(arr?: T[]) {
     if (arr) this.storage = [...arr];
   }
-  private generateId(): number {
-    const id = Date.now();
-    return id;
+  private generateId(): number {    ;
+    return Date.now();;
   }
 
   add(obj: T | WithoutId<T>): void {
