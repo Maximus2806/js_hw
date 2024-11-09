@@ -3,13 +3,8 @@
 // Используйте keyof для типизации ключей объекта
 
 function getKeyByValue<T extends object, U>(obj: T, value: U): keyof T | undefined{
-    let result
-    for (const key in obj) {
-        if (obj[key] === value) {
-            result = key
-        }
-    }
-    return result
+    const entry = Object.entries(obj).find(([_, val]) => val === value);
+    return entry ? (entry[0] as keyof T) : undefined
 }
 
 const person1 = { name: "Alice", age: 30, job: "Engineer" };
