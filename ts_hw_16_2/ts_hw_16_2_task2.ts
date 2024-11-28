@@ -3,7 +3,7 @@
 // Используйте keyof для типизации ключей объекта
 
 function getKeyByValue<T extends object, U>(obj: T, value: U): keyof T | undefined {
-  return Object.keys(obj).find((key) => obj[key] === value) as keyof T;
+  return Object.keys(obj).find((key) => obj[key as keyof T] === value) as keyof T;
 }
 
 const person1 = { name: "Alice", age: 30, job: "Engineer" };
